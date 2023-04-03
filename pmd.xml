@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="quickstart"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+    <description>
+        My custom rules
+    </description>
+    <exclude-pattern>.*/main/java/.*</exclude-pattern> //исключение остальных файлов из проверки
+    <include-pattern>.*/Player.java</include-pattern> //проверка только файла Player.java
+<!--использование только проверки из категорий errorprone, codestyle и design-->
+    <rule ref="category/java/errorprone.xml"/>
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="NoPackage"/> //All classes, interfaces, enums and annotations must belong to a named package
+        <exclude name="MethodArgumentCouldBeFinal"/> //Local variable '…' could be declared final
+        <exclude name="LocalVariableCouldBeFinal"/> //Parameter '…' is not assigned and could be declared final
+    </rule>
+    <rule ref="category/java/design.xml">
+        <exclude name="LawOfDemeter"/> //Potential violation of Law of Demeter (method chain calls)
+    </rule>
+    //Выключение в файлах исходных текстов по месту появления (@SuppressWarnings) см. в Player.java
+</ruleset>

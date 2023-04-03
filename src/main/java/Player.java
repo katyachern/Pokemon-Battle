@@ -5,8 +5,9 @@
  */
 
 import java.util.Random;
-
+@SuppressWarnings("PMD.AtLeastOneConstructor")
 public abstract class Player {
+    @SuppressWarnings({"PMD.BeanMembersShouldSerialize", "PMD.CommentDefaultAccessModifier"})
     Monster monster;
 
     /**
@@ -21,6 +22,7 @@ public abstract class Player {
      * Determines if players monster is dead
      * @return either true or false
      */
+    @SuppressWarnings({"PMD.SimplifyBooleanReturns", "PMD.OnlyOneReturn"})
     public boolean hasLost() {
         if (monster.getHP() <= 0) {
             return true;
@@ -37,6 +39,7 @@ public abstract class Player {
      * @param enemy is the opponent
      * @return either true or false
      */
+    @SuppressWarnings({"PMD.SimplifyBooleanReturns", "PMD.OnlyOneReturn"})
     public boolean isFasterThan(Player enemy) {
         if (this.monster.getSpeed() >= enemy.getMonster().getSpeed()) {
             return true;
@@ -54,6 +57,8 @@ public abstract class Player {
      * @param player the opponent
      * @param m int corresponding to monster move
      */
+    @SuppressWarnings({"PMD.CompareObjectsWithEquals", "PMD.UseEqualsToCompareStrings", "PMD.CognitiveComplexity", "PMD.ShortVariable", "PMD.LinguisticNaming", "PMD.UselessParentheses", "PMD.AvoidLiteralsInIfCondition"})
+    //Выключение в файлах исходных текстов по месту появления (@SuppressWarnings) три проверки
     public void attack(Player player, int m) {
         Random random = new Random();
         double roll = random.nextDouble();
